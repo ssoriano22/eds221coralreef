@@ -7,3 +7,4 @@ This repo currently contains the following in addition to this README.md:
 | File Name | Description |
 | --------- | ----------- |
 | roll_dice.R | An R script that generates random die rolls for two dice. |
+| initialize_reef.R | An R script that initializes our 5x5 reef environment for this model |
