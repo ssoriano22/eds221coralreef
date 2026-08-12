@@ -88,4 +88,4 @@ for (t in 2:length(years)) {
 }
 coral_cover_pct
 # When correct, your code will produce this result for the coral cover percent:
-#  [1] 0.32 0.32 0.32 0.32 0.32 0.32 0.24 0.20 0.16 0.16 0.12
+#  [1] 0.32 0.24 0.24 0.24 0.24 0.20 0.20 0.20 0.16 0.08 0.08
