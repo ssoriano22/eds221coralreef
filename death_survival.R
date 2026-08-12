@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 set.seed(221)
 
 # STEP 1: Initialize your reef
