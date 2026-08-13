@@ -67,6 +67,14 @@ for (t in 2:length(years)) {
           print("Coral died")
           # Update the reef
           reef[r, c] <- 0
+        } else if (coral_outcome >= 6) {
+          # Growth
+          print("Coral grew")
+          #Roll 1d8 for this coral
+          grow_roll <- roll1d8()
+          # Update the reef
+          reef <- growth(reef, grow_roll, r, c)
+          reef[r, c] <- 1
         } else {
           # Survival
           print("Coral survived")

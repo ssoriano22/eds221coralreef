@@ -4,52 +4,41 @@
 
 # Roll Dice
 roll2d6 <- function() {
-  total <- sum(sample(1:6, size = 2, replace = FALSE))
-  return(total)
+  d6_total <- sum(sample(1:6, size = 2, replace = TRUE))
+  return(d6_total)
+}
+
+# Roll Dice
+roll1d8 <- function() {
+  d8_total <- sample(1:8, size = 1, replace = TRUE)
+  return(d8_total)
 }
 
 # Coral Growth Direction
-growth <- function(reef, roll, row, col) {
+growth <- function(g_reef, roll, row, col) {
+  # Set growth offsets for row and col (coral grows left(row-1)/right(row+1), down(col-1)/up(col+1))
   growth_row_offset <- c(-1, -1, -1, 0, 1, 1, 1, 0)
   growth_col_offset <- c(-1, 0, 1, 1, 1, 0, -1, -1)
 
+  # Find growth coordinate (row, col) for new coral
   growth_row <- row + growth_row_offset[roll]
   growth_col <- col + growth_col_offset[roll]
 
-  reef[growth_row, growth_col] <- 1
+  # Check if growth coordinate is in bounds of reef matrix
+  in_bounds <- growth_row >= 1 &&
+    growth_row <= nrow(g_reef) &&
+    growth_col >= 1 &&
+    growth_col <= ncol(g_reef)
 
-  return(reef)
+  # Use an if statement to update the reef w/ growth ONLY IF we're in bounds
+  if (in_bounds) {
+    g_reef[growth_row, growth_col] <- 1
+  }
+  return(g_reef)
 }
 
 #In that script, write a function to encapsulate the logic for putting 8 random corals on the initialized reef.
 # Rather than hard-coding the number at 8, make the number of corals an input.
-
-# 1) Write out expressions for logic
-
-# Create a matrix - 5x5 of 0s
-# reef <- matrix(0, nrow = 5, ncol = 5)
-# reef
-
-# Random sample 8 cell labels
-# r_cells <- sample(1:25, size = 8)
-# r_cells
-# cell_label <- 12
-# cell_row <- (cell_label - 1) %/% 5 + 1
-# # Columns
-# cell_column <- (cell_label - 1) %% 5 + 1
-# # Fill matrix coordinate (row, column) w/ 1 (coral is present)
-# reef_matrix[cell_row, cell_column] <- 1
-# reef_matrix
-
-# 2) Determine if the function needs any inputs - yes
-# num_init_corals - the number of random corals to initialize the reef
-# reef - the reef matrix
-
-# 3) Write the function call
-
-#initial_reef <- initialize_reef(reef, num_init_corals)
-
-# 4) Put the expression(s) in a function definition
 
 # Set random seed
 set.seed(32)
