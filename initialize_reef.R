@@ -25,14 +25,13 @@ r_cells <- sample(1:25, size = 8)
 r_cells
 
 # For each sample cell label:
-#for (cell_label in r_cells){
+for (cell_label in r_cells) {
   # Rows
-  cell_label = 12
-  cell_row <- (cell_label-1) %/% 5 + 1
+  #cell_label <- 12
+  cell_row <- (cell_label - 1) %/% 5 + 1
   # Columns
-  cell_column <- (cell_label-1) %% 5 + 1
+  cell_column <- (cell_label - 1) %% 5 + 1
   # Fill matrix coordinate (row, column) w/ 1 (coral is present)
-  reef_matrix[cell_row,cell_column] <- 1
+  reef_matrix[cell_row, cell_column] <- 1
   reef_matrix
-
-#}
+}
