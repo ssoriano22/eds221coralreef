@@ -27,19 +27,19 @@ growth <- function(reef, roll, row, col) {
 # 1) Write out expressions for logic
 
 # Create a matrix - 5x5 of 0s
-reef <- matrix(0, nrow = 5, ncol = 5)
-reef
+# reef <- matrix(0, nrow = 5, ncol = 5)
+# reef
 
 # Random sample 8 cell labels
-r_cells <- sample(1:25, size = 8)
-r_cells
-cell_label <- 12
-cell_row <- (cell_label - 1) %/% 5 + 1
-# Columns
-cell_column <- (cell_label - 1) %% 5 + 1
-# Fill matrix coordinate (row, column) w/ 1 (coral is present)
-reef_matrix[cell_row, cell_column] <- 1
-reef_matrix
+# r_cells <- sample(1:25, size = 8)
+# r_cells
+# cell_label <- 12
+# cell_row <- (cell_label - 1) %/% 5 + 1
+# # Columns
+# cell_column <- (cell_label - 1) %% 5 + 1
+# # Fill matrix coordinate (row, column) w/ 1 (coral is present)
+# reef_matrix[cell_row, cell_column] <- 1
+# reef_matrix
 
 # 2) Determine if the function needs any inputs - yes
 # num_init_corals - the number of random corals to initialize the reef

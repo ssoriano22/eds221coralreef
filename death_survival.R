@@ -1,15 +1,12 @@
 #!/usr/bin/env Rscript
 
+source("R/util.R")
+
 set.seed(221)
 
 # STEP 1: Initialize your reef
-reef <- matrix(0,nrow = 5,ncol = 5)
-random_coral <- sample(1:25, size = 8)
-for (rc in random_coral) {
-  rc_row <- (rc - 1) %/% 5 + 1
-  rc_col <- (rc - 1) %% 5 + 1
-  reef[rc_row, rc_col] <- 1
-}
+blank_reef <- matrix(0, nrow = 5, ncol = 5)
+reef <- initialize_reef(blank_reef, 8)
 print(reef)
 
 # Your reef should look like this:
@@ -31,7 +28,6 @@ coral_cover_pct <- integer(length(years))
 # > coral_cover_pct
 #  [1] 0 0 0 0 0 0 0 0 0 0 0
 
-
 # STEP 3: Calculate coral cover in the first year
 # Hint: reef is all 1's and 0's, so the mean of the reef equals the percent cover.
 
@@ -42,8 +38,8 @@ coral_cover_pct
 # > coral_cover_pct
 #  [1] 0.32 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
 
-# STEP 4: Loop over time. Call your iterator `t`. You've already calculated 
-# percent cover for the first year, so start your sequence at 2. Fill in the 
+# STEP 4: Loop over time. Call your iterator `t`. You've already calculated
+# percent cover for the first year, so start your sequence at 2. Fill in the
 # blank below.
 for (t in 2:length(years)) {
   # STEP 5: Update current and previous reef
@@ -55,14 +51,13 @@ for (t in 2:length(years)) {
   # STEP 6: Loop over the rows and columns. Call your iterators r and c.
   for (r in 1:nrow(reef)) {
     for (c in 1:ncol(reef)) {
-
       # STEP 7: Check for coral
       # Check if this cell had a coral in it in the previous reef
-      if (prev_reef[r,c] == 1) {
+      if (prev_reef[r, c] == 1) {
         print(paste("Coral found at", r, c))
-        
+
         # STEP 8: Determine coral's fate
-        
+
         # Roll 2d6 for this coral
         coral_outcome <- sum(sample(1:6, size = 2, replace = TRUE))
         # Fill in the conditions below for mortality and survival
@@ -71,12 +66,12 @@ for (t in 2:length(years)) {
           # Mortality
           print("Coral died")
           # Update the reef
-          reef[r,c] <- 0
+          reef[r, c] <- 0
         } else {
           # Survival
           print("Coral survived")
           # Update the reef
-          reef[r,c] <- 1
+          reef[r, c] <- 1
         }
       }
     }
@@ -86,7 +81,6 @@ for (t in 2:length(years)) {
 
   # STEP 9: Update coral_cover_pct
   coral_cover_pct[t] <- mean(reef)
-  
 }
 coral_cover_pct
 # When correct, your code will produce this result for the coral cover percent:
