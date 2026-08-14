@@ -8,5 +8,5 @@ This repo currently contains the following in addition to this README.md:
 | --------- | ----------- |
 | roll_dice.R | An R script that generates random die rolls for two dice. |
 | initialize_reef.R | An R script that initializes our 5x5 reef environment for this model |
-| death_survival.R | An R script that determines whether coral surives or dies based on a 2d6 die roll |
+| death_survival.R | An R script that determines whether coral grows, surives or dies based on a 2d6 die roll |
 | R/util.R | An R script with utility functions for the other R scripts in this project |
